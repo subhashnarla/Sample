@@ -15,8 +15,8 @@ node{
             }
    }
    
-   C:\Windows\System32\config\systemprofile\AppData\Local\Jenkins\.jenkins\tools\hudson.tasks.Maven_MavenInstallation\M3\bin
-   C:\Windows\system32\config\systemprofile\AppData\Local\Jenkins\.jenkins\workspace\Jenkinsfilepipeline
+  // C:\Windows\System32\config\systemprofile\AppData\Local\Jenkins\.jenkins\tools\hudson.tasks.Maven_MavenInstallation\M3\bin
+   //C:\Windows\system32\config\systemprofile\AppData\Local\Jenkins\.jenkins\workspace\Jenkinsfilepipeline
    stage('SonarQube Analysis') {
        // def mvnHome =  tool name: 'M3', type: 'maven'
       def mvnHome = tool 'M3'
