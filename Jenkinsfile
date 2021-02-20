@@ -3,13 +3,21 @@ node{
      git 'https://github.com/subhashnarla/Sample'
    }
    stage('Compile-Package'){
+      def mvnHome = tool 'M3'
       // Get maven home path
-      def mvnHome =  tool name: 'M3', type: 'maven'   
-      sh "${mvnHome}/bin/mvn package"
+     // def mvnHome =  tool name: 'M3', type: 'maven'   
+     // sh "${mvnHome}/bin/mvn package"
+      withEnv(["MVN_HOME=$mvnHome"]) {
+           // if (isUnix()) {
+             //   sh '"$MVN_HOME/bin/mvn" -Dmaven.test.failure.ignore clean package'
+            //} else {
+                bat(/"%MVN_HOME%\bin\mvn" -Dmaven.test.failure.ignore clean package/)
+            }
    }
    
    stage('SonarQube Analysis') {
-        def mvnHome =  tool name: 'M3', type: 'maven'
+       // def mvnHome =  tool name: 'M3', type: 'maven'
+      def mvnHome = tool 'M3'
         withSonarQubeEnv('sonar') { 
           sh "${mvnHome}/bin/mvn sonar:sonar"
         }
