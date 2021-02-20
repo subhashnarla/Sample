@@ -18,12 +18,16 @@ node{
    stage('SonarQube Analysis') {
        // def mvnHome =  tool name: 'M3', type: 'maven'
       def mvnHome = tool 'M3'
-        withSonarQubeEnv('sonar') { 
+     // step(withMaven(maven:'Maven 3.6.8')) {
+       // withSonarQubeEnv('sonar') { 
+      withSonarQubeEnv('sonar') {
+        withEnv(["MVN_HOME=$mvnHome"]) {
+           bat(/"%MVN_HOME%\bin\mvn" -f sonarqube-scanner-maven\pom.xml -Dmaven.test.failure.ignore clean package sonar:sonar/)
           //sh "${mvnHome}/bin/mvn sonar:sonar"
-            def sonarScanner = tool name: 'sonar', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
+           //// def sonarScanner = tool name: 'sonar', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
               //bat "${sonarScanner}/bin/sonar-scanner -e -Dsonar.host.url=http://localhost:9000"
           bat(/"%mvnHome%\bin\mvn sonar:sonar"/)
-        }
+        }}
     }
    
    stage('Email Notification'){
