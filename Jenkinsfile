@@ -15,6 +15,8 @@ node{
             }
    }
    
+   C:\Windows\System32\config\systemprofile\AppData\Local\Jenkins\.jenkins\tools\hudson.tasks.Maven_MavenInstallation\M3\bin
+   C:\Windows\system32\config\systemprofile\AppData\Local\Jenkins\.jenkins\workspace\Jenkinsfilepipeline
    stage('SonarQube Analysis') {
        // def mvnHome =  tool name: 'M3', type: 'maven'
       def mvnHome = tool 'M3'
@@ -26,7 +28,7 @@ node{
           //sh "${mvnHome}/bin/mvn sonar:sonar"
            //// def sonarScanner = tool name: 'sonar', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
               //bat "${sonarScanner}/bin/sonar-scanner -e -Dsonar.host.url=http://localhost:9000"
-          bat(/"%mvnHome%\bin\mvn sonar:sonar"/)
+         // bat(/"%mvnHome%\bin\mvn sonar:sonar"/)
         }}
     }
    
