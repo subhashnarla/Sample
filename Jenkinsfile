@@ -19,7 +19,10 @@ node{
        // def mvnHome =  tool name: 'M3', type: 'maven'
       def mvnHome = tool 'M3'
         withSonarQubeEnv('sonar') { 
-          sh "${mvnHome}/bin/mvn sonar:sonar"
+          //sh "${mvnHome}/bin/mvn sonar:sonar"
+            def sonarScanner = tool name: 'sonar', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
+              //bat "${sonarScanner}/bin/sonar-scanner -e -Dsonar.host.url=http://localhost:9000"
+          bat "%mvnHome%\bin\mvn sonar:sonar"
         }
     }
    
