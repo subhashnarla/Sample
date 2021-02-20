@@ -22,7 +22,7 @@ node{
           //sh "${mvnHome}/bin/mvn sonar:sonar"
             def sonarScanner = tool name: 'sonar', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
               //bat "${sonarScanner}/bin/sonar-scanner -e -Dsonar.host.url=http://localhost:9000"
-          bat "%mvnHome%\bin\mvn sonar:sonar"
+          bat(/"%mvnHome%\bin\mvn sonar:sonar"/)
         }
     }
    
