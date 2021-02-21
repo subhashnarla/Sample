@@ -32,7 +32,8 @@
 </dependencies>
       
         <build>
-    
+        <plugins>
+      <plugin>
       <executions>
         <execution>
             <phase>package</phase>
@@ -41,6 +42,8 @@
             </goals>
         </execution>
     </executions>
-      </build>
+           </plugin>
+    </plugins>
+  </build>
       
 </project>
